@@ -31,6 +31,11 @@ app.get("/", (req, res) => res.sendFile(CLIENT_DIR + "index.html"));
 io.on("connection", socket => {
   console.log(`User has connected!`);
   // check for user disconnect
+
+  socket.on("sayHello", () => {
+    console.log(socket.id + "says hi");
+  })
+
   socket.on("disconnect", () => {
     console.log(`User has disconnected!`);
   });
