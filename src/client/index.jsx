@@ -1,5 +1,5 @@
-import React from 'react';
-import { Component } from 'react';
+import React from "react";
+import { Component } from "react";
 
 class App extends Component {
   constructor(props) {
@@ -20,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App; 
+export default App;
