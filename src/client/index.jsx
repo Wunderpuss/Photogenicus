@@ -1,15 +1,14 @@
-import React from 'react';
-import { Component } from 'react';
+import React from "react";
+import { Component } from "react";
 
-class App extends Component{
-    
-    render(){
-        return(
-            <div>
-                <button className='submit'>Click Me Pretty Please!</button>
-            </div>
-        )
-    }//this is a change;
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <button className="submit">Click Me Pretty Please!</button>
+      </div>
+    );
+  }
 }
 
-export default App; 
+export default App;
