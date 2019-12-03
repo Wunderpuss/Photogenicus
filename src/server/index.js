@@ -2,11 +2,15 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+
+// bring in path methods
+const path = require("path");
+
 // socket.io requires http server
 const http = require("http").createServer(app);
+
 // bring in socket.io
 const io = require("socket.io")(http);
-const path = require("path");
 
 // set up variables
 const PORT = process.env.PORT || 3030;
@@ -18,11 +22,10 @@ const CLIENT_DIR = path.join(DIR, CLIENT);
 app.use(express.json());
 
 // static for dist/build
+app.use("/dist", express.static(path.join(DIR, "../dist")));
 
-// root route
-app.get("/", (req, res) => {
-  res.sendFile(CLIENT_DIR + "index.html");
-});
+// serve root route
+app.get("/", (req, res) => res.sendFile(CLIENT_DIR + "index.html"));
 
 // check for user connection
 io.on("connection", socket => {
