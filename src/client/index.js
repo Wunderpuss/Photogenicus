@@ -7,7 +7,7 @@ function Main() {
 
   return (
     <div>
-      <div>Render Me!</div>
+      <div>Render YOU!</div>
     </div>
   );
 }
