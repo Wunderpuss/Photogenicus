@@ -22,7 +22,7 @@ const CLIENT_DIR = path.join(DIR, CLIENT);
 app.use(express.json());
 
 // static for dist/build
-app.use("/dist", express.static(path.join(DIR, "../dist")));
+app.use("/dist", express.static(path.join(DIR, "../../dist")));
 
 // serve root route
 app.get("/", (req, res) => res.sendFile(CLIENT_DIR + "index.html"));
