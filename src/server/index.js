@@ -29,10 +29,26 @@ app.get("/", (req, res) => res.sendFile(CLIENT_DIR + "index.html"));
 
 // check for user connection
 io.on("connection", socket => {
-  console.log(`User has connected!`);
+  console.log(`${socket.id} has connected!`);
+
+  // check for solution attempt
+  socket.on("solution attempt", ( data ) => {
+    let testValue = 5;
+    let testAnswer = 8;
+    // TAKE CODE FROM DATA AND EVAL IT SO YOU CAN USE ITS FUNCTIONALITY
+    let testFunc = eval(data.code);
+    // FOR NOW TEST IF IT WORKS FOR OUR SINGLE ALGO ADD3
+    if (testFunc(testValue) === testAnswer) {
+      socket.emit('win');
+      socket.broadcast.emit('lose');
+    }
+    else 
+      socket.emit('try again');
+  })
+  
   // check for user disconnect
   socket.on("disconnect", () => {
-    console.log(`User has disconnected!`);
+    console.log(`${socket.id} has disconnected!`);
   });
 });
 
