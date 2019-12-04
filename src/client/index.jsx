@@ -1,13 +1,39 @@
 import React from "react";
-import { Component } from "react";
+import CodeMirror from 'react-codemirror';
 
-class App extends Component {
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/lib/codemirror.css';
+// import 'codemirror/theme/material.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { code: "// Algo problem\n// Type below\n" };
+    this.updateCode = this.updateCode.bind(this);
+  }
+  updateCode(newCode) {
+    console.log(newCode);
+    this.setState({ code: newCode });
+  }
   render() {
-    return (
-      <div>
-        <button className="submit">Click Me Pretty Please!</button>
-      </div>
-    );
+    // value to options should fetch to the server and grab a random code question
+    const options = {
+      lineNumbers: true,
+      mode: 'javascript',
+    };
+    return (<div>
+      <CodeMirror id="code" value={this.state.code} onChange={this.updateCode} options={options} />
+      <button onClick={
+        () => {
+          const data = this.state;
+          fetch('/code', {
+            method: 'POST',
+            body: data
+          }).then(unparsed => unparsed.json).then(response => {
+          })
+        }
+      }>CLICK ME</button>
+    </div>);
   }
 }
 

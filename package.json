@@ -24,6 +24,7 @@
     "codemirror": "^5.49.2",
     "express": "^4.17.1",
     "react": "^16.12.0",
+    "react-codemirror": "^1.0.0",
     "react-dom": "^16.12.0",
     "socket.io": "^2.3.0"
   },
@@ -32,8 +33,11 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.1",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.1",
+    "style-loader": "^1.0.1",
+    "to-string-loader": "^1.1.6",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
