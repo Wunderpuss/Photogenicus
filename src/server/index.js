@@ -32,11 +32,6 @@ io.on("connection", socket => {
   console.log(`${socket.id} has connected!`);
   // check for user disconnect
 
-  socket.on("chat message", (msg) => {
-    console.log(socket.id + " says " + msg.theMessage);
-    socket.broadcast.emit("send it back", msg);
-  })
-
   socket.on("disconnect", () => {
     console.log(`${socket.id} has disconnected!`);
   });

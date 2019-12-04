@@ -9,7 +9,26 @@ class App extends React.Component {
     super(props);
     this.state = {
       code:
-        "// Algo problem:\n//create a function that adds 3 to 'n'\n// Type below\n\nfunction addThree(n) {\n\n}"
+`// Algo problem:
+// create a function that adds 3 to 'n'
+
+function Showdown() {
+
+  function addThree(n) {
+    // WRITE CODE BELOW AND
+
+
+
+
+    
+    // ABOVE THIS LINE ONLY
+  }
+
+  return addThree;
+}
+
+Showdown();
+`
     };
     this.updateCode = this.updateCode.bind(this);
   }
@@ -27,13 +46,13 @@ class App extends React.Component {
       <CodeMirror id="code" value={this.state.code} onChange={this.updateCode} options={options} />
       <button onClick={
         () => {
-          const data = {...this.state};
-          socket.emit( "i love testes", data );
-          // fetch('/code', {
-          //   method: 'POST',
-          //   body: data
-          // }).then(unparsed => unparsed.json).then(response => {
-          // })
+          const data = { ...this.state };
+          // socket.emit( "i love testes", data );
+          // console.log(data);
+          // console.log(eval(data.code)(7));
+          // console.log(eval(data.code)(7) === 10);
+          const theFunction = eval(data.code);
+          console.log('addThree(7) equals ' + theFunction(7));
         }
       }>CLICK ME</button>
     </div>);
@@ -41,18 +60,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-var ph = `function Showdown() {
-  function userCreated(val) {
-    // add code here
-    
-
-
-
-    // return here
-
-  }
-  return userCreated;
-}
-
-Showdown();`

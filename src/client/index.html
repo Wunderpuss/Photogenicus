@@ -13,17 +13,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-      console.log(socket);
-      socket.on("send it back", (msg) => {
-        console.log(eval(msg.theMessage)(5));
-        // let test = JSON.parse(msg.theMessage);
-        // console.log(test);
-        // if (test.bool) {
-        //   console.log("%c"+test.theMessage, test.params);
-        // } 
-        // else 
-        //   console.log(msg.theMessage);
-      })
     </script>
     <script type="text/javascript" src="../../dist/bundle.js"></script>
     <noscript>You need javascript enabled to run this app.</noscript>
