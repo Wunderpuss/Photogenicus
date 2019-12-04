@@ -20,7 +20,7 @@ function Showdown() {
 
 
 
-    
+
     // ABOVE THIS LINE ONLY
   }
 
@@ -36,23 +36,34 @@ Showdown();
     this.setState({ code: newCode });
   }
 
+  componentDidMount() {
+    socket.on('win', () => {
+      console.log("%cwinner winner chicken dinner", "font-size:61px; color:green;");
+    });
+    socket.on('lose', () => {
+      console.log("%cLOSER...waaah waaah waaaah", "font-size:61px; color:red;");
+    })
+    socket.on('try again', () => {
+      console.log('%cUnsuccessful, try again!', "font-size:61px; color:yellow;");
+    })
+  }
+
   render() {
     // value to options should fetch to the server and grab a random code question
     const options = {
       lineNumbers: true,
       mode: "javascript"
     };
+
     return (<div>
       <CodeMirror id="code" value={this.state.code} onChange={this.updateCode} options={options} />
       <button onClick={
         () => {
           const data = { ...this.state };
-          // socket.emit( "i love testes", data );
-          // console.log(data);
-          // console.log(eval(data.code)(7));
-          // console.log(eval(data.code)(7) === 10);
-          const theFunction = eval(data.code);
-          console.log('addThree(7) equals ' + theFunction(7));
+          // const theFunction = eval(data.code);
+          // console.log('addThree(7) equals ' + theFunction(7));
+          socket.emit('solution attempt', data);
+
         }
       }>CLICK ME</button>
     </div>);
