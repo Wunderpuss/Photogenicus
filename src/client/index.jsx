@@ -1,25 +1,27 @@
 import React from "react";
-import CodeMirror from 'react-codemirror';
+import CodeMirror from "react-codemirror";
 
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/lib/codemirror.css';
-// import 'codemirror/theme/material.css';
+import "codemirror/mode/javascript/javascript";
+import "codemirror/lib/codemirror.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { code: "// Algo problem\n// Type below\n" };
+    this.state = {
+      code:
+        "// Algo problem:\n//create a function that adds 3 to 'n'\n// Type below\n\nfunction addThree(n) {\n\n}"
+    };
     this.updateCode = this.updateCode.bind(this);
   }
   updateCode(newCode) {
-    console.log(newCode);
     this.setState({ code: newCode });
   }
+
   render() {
     // value to options should fetch to the server and grab a random code question
     const options = {
       lineNumbers: true,
-      mode: 'javascript',
+      mode: "javascript"
     };
     return (<div>
       <CodeMirror id="code" value={this.state.code} onChange={this.updateCode} options={options} />
