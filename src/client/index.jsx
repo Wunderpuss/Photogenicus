@@ -39,9 +39,11 @@ Showdown();
   componentDidMount() {
     socket.on('win', () => {
       console.log("%cwinner winner chicken dinner", "font-size:61px; color:green;");
+      socket.disconnect();
     });
     socket.on('lose', () => {
       console.log("%cLOSER...waaah waaah waaaah", "font-size:61px; color:red;");
+      socket.disconnect();
     })
     socket.on('try again', () => {
       console.log('%cUnsuccessful, try again!', "font-size:61px; color:yellow;");
