@@ -8,16 +8,33 @@ class App extends Component {
   }
 
   handleClick() {
-    socket.emit('sayHello');
+    socket.emit('chat message', {
+      theMessage: document.getElementById('m').value
+    });
   }
 
   render() {
     return (
       <div>
-        <button className="submit" onClick={this.handleClick}>Click Me Pretty Please!</button>
+        <textarea id='m' defaultValue={ph} style={{width: '200px', height: '200px'}}/>     <button className="submit" onClick={this.handleClick}>Click Me Pretty Please!</button>
       </div>
     );
   }
 }
 
 export default App;
+
+var ph = `function Showdown() {
+  function userCreated(val) {
+    // add code here
+    
+
+
+
+    // return here
+
+  }
+  return userCreated;
+}
+
+Showdown();`
