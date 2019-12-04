@@ -4,9 +4,9 @@
   "description": "``` git clone https://github.com/Wunderpuss/Photogenicus.git ```",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/index.js",
+    "start": "nodemon src/server/index.js",
     "build": "webpack",
-    "dev": "nodemon './src/server/index.js'",
+    "dev": "webpack-dev-server --open",
     "http": "node './src/server/index.js'"
   },
   "repository": {
